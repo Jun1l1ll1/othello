@@ -1,6 +1,9 @@
 <script>
-    import Board from "../lib/components/Board.svelte";
+    import Board from "$lib/components/Board.svelte";
+    import PlayerBoard from "$lib/components/PlayerBoard.svelte";
 </script>
+
+<PlayerBoard/>
 
 <div>
     <Board/>
