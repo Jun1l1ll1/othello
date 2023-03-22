@@ -2,23 +2,28 @@
     import { hasCheckers, isPlayer } from "$lib/stores";
     import Checker from "./Checker.svelte";
 
+    let isPlayerValue;
+    isPlayer.subscribe(value => {isPlayerValue = value;});
+
     export let row;
     export let column;
     let thisTileNr =  String(row)+String(column)
 
     
     function placeChecker() {
-        if (!hasCheckers.hasOwnProperty(thisTileNr)) {
-            hasCheckers[thisTileNr] = isPlayer;
+        if (!hasCheckers.hasOwnProperty(thisTileNr) && isPlayerValue != 2) {
+            hasCheckers[thisTileNr] = isPlayerValue;
         }
     }
 
-    console.log();
+    // console.log();
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div on:click={placeChecker} class="tile {(column+row)%2 == 0 ? 'tileColor2' : 'tileColor1'}">
-    {#if hasCheckers.hasOwnProperty(thisTileNr)}<Checker player={hasCheckers[thisTileNr]}/>{/if}
+    {#if hasCheckers.hasOwnProperty(thisTileNr)}
+    <Checker player={hasCheckers[thisTileNr]}/>
+    {/if}
 </div>
 
 <style>

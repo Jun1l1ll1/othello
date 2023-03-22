@@ -8,8 +8,8 @@
     div {
         border-radius: 50%;
         box-shadow: inset 0 0 0 3px rgba(121, 121, 121, 0.26);
-        width: 80%;
-        height: 80%;
+        width: 85%;
+        height: 85%;
     }
 
     .player0 {
